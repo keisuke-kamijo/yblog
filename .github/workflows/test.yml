@@ -1,8 +1,8 @@
-name: lint
+name: test
 on: [push]
 
 jobs:
-  lint-ruby:
+  test-rails:
     runs-on: ubuntu-latest
     container:
       image: ruby:2.7.2
@@ -30,6 +30,13 @@ jobs:
           bundle --path vendor/bundle
           bundle update --bundler
           bundle install --quiet --jobs 4 --retry 3
-      - name: Run linters
+      - name: Setup Database
         run: |
-          bundle exec rubocop
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+      - name: Run tests
+        run: |
+          bundle exec rails test
+      - name: Run spec tests
+        run: |
+          bundle exec rspec
