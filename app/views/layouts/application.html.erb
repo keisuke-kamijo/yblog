@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-<<<<<<< HEAD
-    <title>Yblog</title>
-=======
     <title><%= yield(:title) %> | YouBlog</title>
->>>>>>> origin/main
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<<<<<<< HEAD
-=======
     <%= yield :css %>
     
->>>>>>> origin/main
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-<<<<<<< HEAD
-    <%= yield %>
-=======
     <%= render 'layouts/header' %>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -30,6 +20,5 @@
     <div class="container">
       <%= yield %>
     </div>
->>>>>>> origin/main
   </body>
 </html>
