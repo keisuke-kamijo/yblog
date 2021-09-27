@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_103446) do
+ActiveRecord::Schema.define(version: 2021_09_27_105840) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_09_27_103446) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_taggings_on_article_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -37,4 +46,6 @@ ActiveRecord::Schema.define(version: 2021_09_27_103446) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "taggings", "articles"
+  add_foreign_key "taggings", "tags"
 end
