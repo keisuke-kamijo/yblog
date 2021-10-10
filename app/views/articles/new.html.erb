@@ -1,0 +1,36 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'editor' %>
+<% end %>
+
+<div class="row">
+  <div class="articleForm" id="app">
+    <%= form_for @article do |f| %>
+      <%= render 'shared/error_messages_editor' %>
+
+      <%= f.text_field :title, class: 'titleForm', placeholder: "title" %>
+
+      <%= f.fields_for :tags do |i| %>
+      <%= i.text_field :name, class: 'tagsForm', placeholder: "tag" %>
+      <% end %>
+      <div class="flexbox">
+        <%= f.text_area :body, class: 'mdEditor', placeholder: "body", "v-model" => "input" %>
+        <div class="mdResult" v-html="convertMarkdown"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  new Vue({
+      el:'#app',
+      data:{
+          input:''
+      },
+      computed:{
+          convertMarkdown:function(){
+              return marked(this.input);
+          }
+      }
+  });
+</script>
+
