@@ -12,7 +12,7 @@ class Tag < ApplicationRecord
       registered_tag.id
     else
       @tag = Tag.new
-      @tag.name = tag_name
+      @tag.name = name
       @tag.save!
       @tag.id
     end
