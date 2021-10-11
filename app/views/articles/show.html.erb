@@ -1,0 +1,26 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'article' %>
+<% end %>
+<div class="showArticle p-3" id="app">
+    <h1 class="articleTitle"><%= @article.title %></h1>
+    <div class="tags">
+        <% @tags.each do |tag| %>
+            <div class="tag">
+                <%= tag.name %>
+            </div>
+        <% end %>
+    </div>
+    <div class="mdResult" v-html="convertMarkdown"></div>
+</div>
+<script>
+  new Vue({
+    el:'#app',
+    computed:{
+      convertMarkdown:function(){
+        var content = <%== JSON.dump(@article.body) %>;
+        console.log(content);
+        return marked(content);
+      }
+    }
+  });
+</script>
