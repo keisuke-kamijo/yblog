@@ -1,0 +1,27 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'articles' %>
+<% end %>
+  <div class="titleAndSeries">
+      <div class="titleOfSeries">記事一覧</div>
+      <div class="showArticles">
+          <% @articles.each do |article| %>
+              <div class="article" v-on:click="jumpArticle({{$item->article_id }})">
+                  <div class="articleTitle"><%= article.title %></div>
+                  <% article.tags.each do |tag| %>
+                    <span class="articleTag"><%= tag.name %></span>
+                  <% end %>
+              </div>
+          <% end %>
+      </div>
+  </div>
+<script>
+  new Vue({
+      el:'#app',
+      methods:{
+          jumpArticle: function(id){
+              var link = "/yourblog/article/" + id;
+              location.href=link;
+          }
+      }
+  })
+</script>
