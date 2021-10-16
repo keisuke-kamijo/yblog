@@ -1,0 +1,37 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'editor' %>
+<% end %>
+
+<div class="row">
+  <div class="articleForm" id="app">
+    <%= form_for @article do |f| %>
+      <%= render 'shared/error_messages_editor' %>
+      <%= f.hidden_field :id, :value => @article.id %>
+      <%= f.text_field :title, class: 'titleForm', placeholder: "title", value: @article.title %>
+
+      <%= f.fields_for :tags do |i| %>
+      <%= i.text_field :name, class: 'tagsForm', placeholder: "tag" , value: @tags_value %>
+      <% end %>
+      <div class="flexbox">
+        <%= f.text_area :body, class: 'mdEditor', placeholder: "body", "v-model" => "input" %>
+        <div class="mdResult" v-html="convertMarkdown"></div>
+      </div>
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  new Vue({
+      el:'#app',
+      data:{
+          input:<%== JSON.dump(@article.body) %>
+      },
+      computed:{
+          convertMarkdown:function(){
+              return marked(this.input);
+          }
+      }
+  });
+</script>
+
