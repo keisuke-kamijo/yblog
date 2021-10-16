@@ -26,4 +26,18 @@ class Article < ApplicationRecord
     end
     true
   end
+
+  def update_with_tags(tag_names, article_params)
+    ActiveRecord::Base.transaction do
+      Tagging.destroy_by(article_id: article_params[:id])
+      self.update!(article_params)
+      tag_names.each do |tag_name|
+        tag_id = Tag.get_or_create(tag_name)
+        Tagging.create!(tag_id: tag_id, article_id: article_params[:id])
+      end
+    rescue ActiveRecord::RecordInvalid
+      return false
+    end
+    true
+  end
 end

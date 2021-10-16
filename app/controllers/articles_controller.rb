@@ -21,9 +21,31 @@ class ArticlesController < ApplicationController
     @tags = @article.tags
   end
 
+  def edit
+    @article = Article.find(params[:id])
+    @tags = @article.tags
+    @tags_value = ''
+    @tags.each do |tag|
+      @tags_value = +@tags_value << tag.name << ' '
+    end
+  end
+
+  def update
+    tag_names = params[:article][:tags][:name].split
+    article_id = params[:article][:id]
+    article = Article.find(article_id)
+
+    if article.update_with_tags(tag_names, article_params)
+      flash[:success] = '記事が更新されました'
+      redirect_to article_url(article_id)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:id, :title, :body)
   end
 end
