@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def articles
+    logger.debug('ああああ')
+    logger.debug(params[:id])
+    @articles = Article.where(user_id: params[:id]).includes(taggings: :tag)
+  end
+
   private
 
   def user_params
