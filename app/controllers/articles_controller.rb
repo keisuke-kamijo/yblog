@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only:[:new, :create, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
-  
+  before_action :logged_in_user, only: %i[new create edit update]
+  before_action :correct_user,   only: %i[edit update]
+
   def new
     @article = Article.new
     @tag = @article.tags.new
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "Please log in."
+      flash[:danger] = 'Please log in.'
       redirect_to login_url
     end
   end
