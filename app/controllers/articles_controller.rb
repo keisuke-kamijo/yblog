@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  before_action :logged_in_user, only: %i[new create edit update]
+  before_action :correct_user,   only: %i[edit update]
+
   def new
     @article = Article.new
     @tag = @article.tags.new
@@ -47,5 +50,17 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:id, :title, :body)
+  end
+
+  def logged_in_user
+    return if logged_in?
+
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 end
