@@ -1,1 +1,35 @@
-<%= @user.name %>
+<div class="accountInfo">
+  <div class="profile-topic">
+      <div class="profile">
+          <p class="trim-image-to-circle">
+
+          </p>
+          <div class="username">
+              <%= @user.name %>
+          </div>
+          <div class="articleInfo">
+              投稿：<%= @num_of_articles %>件
+          </div>
+      </div>
+      <div class="topic">
+          <div class="description">関連する話題:</div>
+          <% @tags.each do |tag| %>
+          <span class="tag" v-on:click="searchWithTag('{{ $tag }}');">
+              <%= tag.name %>
+          </span>
+          <% end %>
+      </div>
+  </div>
+</div>
+
+<script>
+  new Vue({
+      el:'#app',
+      methods:{
+          searchWithTag: function(id){
+              var link = "/yourblog/articles?tag=" + id;
+              location.href=link;
+          }
+      }
+  })
+</script>
