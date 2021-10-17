@@ -53,6 +53,7 @@ class ArticlesController < ApplicationController
   end
 
   def logged_in_user
+    store_location
     return if logged_in?
 
     flash[:danger] = 'Please log in.'
