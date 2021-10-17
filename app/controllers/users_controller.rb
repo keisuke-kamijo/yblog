@@ -18,11 +18,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @num_of_articles = Article.where(user_id: params[:id]).size
+    @tags = Set.new
+    @user.articles.each do |article|
+      article.tags.each do |tag|
+        @tags.add(tag)
+      end
+    end
   end
 
   def articles
-    logger.debug('ああああ')
-    logger.debug(params[:id])
     @articles = Article.where(user_id: params[:id]).includes(taggings: :tag)
   end
 
