@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'article' %>
 <% end %>
 <div class="showArticle p-3" id="app">
-    <% if is_owner_of_article?(@article.id) %>
+    <% if owner_of_article?(@article.id) %>
       <button onclick="location.href='<%= edit_article_path(@article.id) %>'" class="btn d-inline edit-button"> 編集</button>
     <% end %>
     <h1 class="articleTitle"><%= @article.title %></h1>
