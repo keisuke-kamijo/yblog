@@ -61,7 +61,8 @@ class ArticlesController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    user_id = Article.find(params[:id]).user_id
+    @user = User.find(user_id)
     redirect_to(root_url) unless @user == current_user
   end
 end
