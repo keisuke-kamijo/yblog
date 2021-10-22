@@ -25,4 +25,10 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.url if request.get?
   end
+
+  def is_owner_of_article?(article_id)
+    user_id = Article.find(params[:id]).user_id
+    user = User.find(user_id)
+    return user == current_user
+  end
 end
