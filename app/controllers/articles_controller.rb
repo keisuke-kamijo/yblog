@@ -46,6 +46,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    article = Article.find(params[:id])
+    user_id = article.user_id
+    article.destroy
+    flash[:success] = '記事を削除しました。'
+    redirect_to "/users/#{user_id}/articles"
+  end
+
   private
 
   def article_params
