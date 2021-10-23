@@ -16,7 +16,8 @@
     <div class="mdResult" v-html="convertMarkdown"></div>
 </div>
 <% if owner_of_article?(@article.id) %>
-  <form method = "delete" action=<%= "/articles/"+ @article.id.to_s %>>
+  <form method = "post" action=<%= "/articles/"+ @article.id.to_s + "" %> onSubmit="return confirmDeletion()">
+    <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value ="削除" class = "btn d-inline delete-button">
   </form>
 <% end %>
@@ -31,4 +32,13 @@
       }
     }
   });
+
+  function confirmDeletion(){
+    if(window.confirm('この記事を削除しますか？')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 </script>
