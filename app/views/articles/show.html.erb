@@ -15,6 +15,11 @@
     </div>
     <div class="mdResult" v-html="convertMarkdown"></div>
 </div>
+<% if owner_of_article?(@article.id) %>
+  <form method = "delete" action=<%= "/articles/"+ @article.id.to_s %>>
+    <input type="submit" value ="削除" class = "btn d-inline delete-button">
+  </form>
+<% end %>
 <script>
   new Vue({
     el:'#app',
