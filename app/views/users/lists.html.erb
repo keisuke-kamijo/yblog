@@ -4,7 +4,7 @@
 
 <div class="titleAndSeries" id="app">
       <div class="titleOfSeries">リスト一覧</div>
-      <div class="showArticles">
+      <div class="showLists">
         <% if logged_in? && owner_of_list?(params[:id]) %>
     
       <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
@@ -19,8 +19,8 @@
       </div>
     <% end %>
           <% @lists.each do |list| %>
-              <div class="article" >
-                  <div class="articleTitle"><%= list.name %></div>
+              <div class="list" >
+                  <div class="listTitle"><%= list.name %></div>
               </div>
           <% end %>
       </div>
