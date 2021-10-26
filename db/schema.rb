@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_153550) do
+ActiveRecord::Schema.define(version: 2021_10_26_062700) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_153550) do
     t.integer "rank"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_153550) do
 
   add_foreign_key "assignments", "articles"
   add_foreign_key "assignments", "lists"
+  add_foreign_key "lists", "users"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
 end
