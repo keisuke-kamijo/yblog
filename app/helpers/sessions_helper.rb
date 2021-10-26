@@ -27,7 +27,7 @@ module SessionsHelper
   end
 
   def owner_of_list?(id)
-    id.to_i == current_user.id 
+    id.to_i == current_user.id
   end
 
   def owner_of_article?(_article_id)
