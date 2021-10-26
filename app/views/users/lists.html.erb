@@ -11,6 +11,7 @@
         <%= f.text_field :name, class: 'form-control' , placeholder: 'リスト名を入力', id: 'new_list_name' %>
 
         <%= f.hidden_field :is_placed, :value =>  true %>
+        <%= f.hidden_field :user_id, :value =>  params[:id] %>
         <%= f.submit "保存", class: "btn" ,id: 'new_list_submit' %>
       <% end %>
       </div>
