@@ -2,6 +2,7 @@ require "test_helper"
 
 class ListTest < ActiveSupport::TestCase
   def setup
+    @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
     @list = List.create(name: "Test List", is_placed: false)
   end
 
