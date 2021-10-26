@@ -18,6 +18,16 @@
     <% end %>
   </div>
 </div>
+<div class="titleAndSeries" id="app">
+      <div class="titleOfSeries">リスト一覧</div>
+      <div class="showArticles">
+          <% @lists.each do |list| %>
+              <div class="article" >
+                  <div class="articleTitle"><%= list.name %></div>
+              </div>
+          <% end %>
+      </div>
+  </div>
 
 <script>
   function hide_form(){
