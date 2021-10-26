@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def lists
     @new_list = List.new
+    @lists = List.where(user_id: params[:id])
   end
 
   private
