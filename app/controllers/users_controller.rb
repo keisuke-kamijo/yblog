@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     @articles = Article.where(user_id: params[:id]).includes(taggings: :tag)
   end
 
+  def lists
+    @new_list = List.new
+  end
+
   private
 
   def user_params

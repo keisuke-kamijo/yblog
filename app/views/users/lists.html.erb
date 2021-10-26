@@ -1,0 +1,32 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'lists' %>
+<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if logged_in? && owner_of_list?(params[:id]) %>
+    
+      <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
+      <div class = "new_list_form">
+      <%= form_for(@new_list) do |f| %>
+        <%= f.text_field :name, class: 'form-control' , placeholder: 'リスト名を入力', id: 'new_list_name' %>
+
+        <%= f.hidden_field :is_placed, :value =>  true %>
+        <%= f.submit "保存", class: "btn" ,id: 'new_list_submit' %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function hide_form(){
+    document.getElementById("new_list_name").style.visibility="hidden";
+    document.getElementById("new_list_submit").style.visibility="hidden";
+  }
+  function display_form(){
+    document.getElementById("new_list_name").style.visibility="visible";
+    document.getElementById("new_list_submit").style.visibility="visible";
+    document.getElementById("button_for_display").style.visibility="hidden";
+  }
+  window.onload = hide_form;
+</script>
