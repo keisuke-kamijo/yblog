@@ -1,9 +1,10 @@
 #new_list_name{
   width:80%;
-  display:inline;
+  margin-left: 10px;
 }
-#new_list_submit{
-  display:inline;
+
+#button_for_display{
+  margin-left: 10px;
 }
 
 .titleAndSeries{
@@ -12,7 +13,7 @@
   min-width:400px;
 }
 .titleOfSeries{
-  margin-top:60px;
+  margin-top:10px;
   width: 100%;
   min-width:400px;
   font-size: 40px;
@@ -26,15 +27,17 @@
   width:100%;
   min-width:400px;
   border: 0.5px solid #aaaaaa;
+  padding-top: 10px;
   padding-left: 15px;
   padding-right:15px;
 }
 
 .showArticles .article{
   margin:10px;
-  width:90%;
   height:100px;
   border: 0.5px solid #aaaaaa;
+  border-right-style: none;
+  border-left-style: none;
 }
 .showArticles .article:hover{
   background-color: #efefef;
