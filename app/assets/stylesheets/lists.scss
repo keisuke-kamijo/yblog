@@ -1,7 +1,49 @@
 #new_list_name{
   width:80%;
-  display:inline;
+  margin-left: 10px;
 }
-#new_list_submit{
-  display:inline;
+
+#button_for_display{
+  margin-left: 10px;
+}
+
+.titleAndSeries{
+  margin: 0 auto;
+  width:60%;
+  min-width:400px;
+}
+.titleOfSeries{
+  margin-top:10px;
+  width: 100%;
+  min-width:400px;
+  font-size: 40px;
+  color: #777777;
+  padding-left: 15px;
+  padding-right:15px;
+}
+
+.showLists{
+  margin-top:10px;
+  width:100%;
+  min-width:400px;
+  border: 0.5px solid #aaaaaa;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right:15px;
+}
+
+.showLists .list{
+  margin:10px;
+  height:100px;
+  border: 0.5px solid #aaaaaa;
+  border-right-style: none;
+  border-left-style: none;
+}
+.showLists .list:hover{
+  background-color: #efefef;
+}
+.showLists .listTitle{
+  margin-left: 5px;
+  font-size: 30px;
+  font-weight: bold;
 }

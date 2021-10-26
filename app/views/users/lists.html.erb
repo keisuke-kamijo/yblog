@@ -1,9 +1,11 @@
 <% content_for :css do %>
   <%= stylesheet_link_tag 'lists' %>
 <% end %>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <% if logged_in? && owner_of_list?(params[:id]) %>
+
+<div class="titleAndSeries" id="app">
+      <div class="titleOfSeries">リスト一覧</div>
+      <div class="showLists">
+        <% if logged_in? && owner_of_list?(params[:id]) %>
     
       <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
       <div class = "new_list_form">
@@ -16,18 +18,23 @@
       <% end %>
       </div>
     <% end %>
+          <% @lists.each do |list| %>
+              <div class="list" >
+                  <div class="listTitle"><%= list.name %></div>
+              </div>
+          <% end %>
+      </div>
   </div>
-</div>
 
 <script>
   function hide_form(){
-    document.getElementById("new_list_name").style.visibility="hidden";
-    document.getElementById("new_list_submit").style.visibility="hidden";
+    document.getElementById("new_list_name").style.display="none";
+    document.getElementById("new_list_submit").style.display="none";
   }
   function display_form(){
-    document.getElementById("new_list_name").style.visibility="visible";
-    document.getElementById("new_list_submit").style.visibility="visible";
-    document.getElementById("button_for_display").style.visibility="hidden";
+    document.getElementById("new_list_name").style.display="inline";
+    document.getElementById("new_list_submit").style.display="inline";
+    document.getElementById("button_for_display").style.display="none";
   }
   window.onload = hide_form;
 </script>
