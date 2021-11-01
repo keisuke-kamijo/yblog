@@ -22,6 +22,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @tags = @article.tags
+
+    @lists = List.where(user_id: @article.user_id) if owner_of_article?(@article.id)
   end
 
   def edit
@@ -54,10 +56,24 @@ class ArticlesController < ApplicationController
     redirect_to "/users/#{user_id}/articles"
   end
 
+  def insert
+    if Assignment.insert_article(selected_list_params)
+      flash[:success] = 'この記事をリストに追加しました。'
+    else
+      flash[:danger] = 'リストの更新に失敗しました。'
+    end
+
+    redirect_to article_url(params[:article_id])
+  end
+
   private
 
   def article_params
     params.require(:article).permit(:id, :title, :body)
+  end
+
+  def selected_list_params
+    params.permit(:article_id, :id, :selected_list)
   end
 
   def logged_in_user
