@@ -2,31 +2,32 @@
   <%= stylesheet_link_tag 'article' %>
 <% end %>
 <div class="showArticle p-3" id="app">
+  <div class="form-inline admin-article">
     <% if owner_of_article?(@article.id) %>
+      <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
+      <input type="hidden" name="article_id" value = <%= @article.id %> />
+      <select class="form-control select-lists d-inline" id="select-lists">
+        <option disabled value="">リストを選択</option>
+        <% @lists.each do |list|%>
+          <option value="<%= list.id %>"><%= list.name %></option>
+        <% end %>
+      </select>
+      <input type="submit" class="btn" value="追加" id="select-lists-button" />
+
       <button onclick="location.href='<%= edit_article_path(@article.id) %>'" class="btn d-inline edit-button"> 編集</button>
     <% end %>
-    <h1 class="articleTitle"><%= @article.title %></h1>
-    <div class="tags">
-        <% @tags.each do |tag| %>
-            <div class="tag">
-                <%= tag.name %>
-            </div>
-        <% end %>
-    </div>
-    <div class="mdResult" v-html="convertMarkdown"></div>
+  </div>
+  <h1 class="articleTitle"><%= @article.title %></h1>
+  <div class="tags">
+    <% @tags.each do |tag| %>
+      <div class="tag">
+        <%= tag.name %>
+      </div>
+    <% end %>
+  </div>
+  <div class="mdResult" v-html="convertMarkdown"></div>
 </div>
 <% if owner_of_article?(@article.id) %>
-  <input type="hidden" name="article_id" value = <%= @article.id %> />
-  <select v-model="selected" name="list_id">
-      <option disabled value="">リストを選択</option>
-      <% @lists.each do |list|%>
-        <option value="<%= list.id %>"><%= list.name %></option>
-      <% end %>
-  </select>
-  に記事を追加
-  <input type="submit" class="sendButton" value="完了"/>
-
-
   <div class="container-for-btn">
     <form method = "post" action=<%= "/articles/"+ @article.id.to_s + "" %> onSubmit="return confirmDeletion()">
       <input type="hidden" name="_method" value="DELETE">
@@ -54,4 +55,15 @@
       return false;
     }
   }
+
+  function hide_form(){
+    document.getElementById("select-lists").style.display="none";
+    document.getElementById("select-lists-button").style.display="none";
+  }
+  function display_form(){
+    document.getElementById("select-lists").style.display="inline";
+    document.getElementById("select-lists-button").style.display="inline";
+    document.getElementById("button_for_display").style.display="none";
+  }
+  window.onload = hide_form;
 </script>
