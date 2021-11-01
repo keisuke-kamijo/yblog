@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get '/signup', to: 'users#new'
   get '/users/:id/articles', to: 'users#articles'
+  post '/users/:id/articles', to: 'articles#insert'
   get '/users/:id/lists', to: 'users#lists'
   resources :users
   resources :articles
