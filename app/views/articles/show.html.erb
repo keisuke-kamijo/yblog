@@ -16,6 +16,17 @@
     <div class="mdResult" v-html="convertMarkdown"></div>
 </div>
 <% if owner_of_article?(@article.id) %>
+  <input type="hidden" name="article_id" value = <%= @article.id %> />
+  <select v-model="selected" name="list_id">
+      <option disabled value="">リストを選択</option>
+      <% @lists.each do |list|%>
+        <option value="<%= list.id %>"><%= list.name %></option>
+      <% end %>
+  </select>
+  に記事を追加
+  <input type="submit" class="sendButton" value="完了"/>
+
+
   <div class="container-for-btn">
     <form method = "post" action=<%= "/articles/"+ @article.id.to_s + "" %> onSubmit="return confirmDeletion()">
       <input type="hidden" name="_method" value="DELETE">
