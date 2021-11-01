@@ -4,16 +4,17 @@
 <div class="showArticle p-3" id="app">
   <div class="form-inline admin-article">
     <% if owner_of_article?(@article.id) %>
-      <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
-      <input type="hidden" name="article_id" value = <%= @article.id %> />
-      <select class="form-control select-lists d-inline" id="select-lists">
-        <option disabled value="">リストを選択</option>
-        <% @lists.each do |list|%>
-          <option value="<%= list.id %>"><%= list.name %></option>
-        <% end %>
-      </select>
-      <input type="submit" class="btn" value="追加" id="select-lists-button" />
-
+      <button class="btn" id="button_for_display" onclick="display_form()"><b>＋</b>新規リストを追加</button>
+      <form action="/users/<%= @article.user_id %>/articles" method="post" class="select-list-form">
+        <input type="hidden" name="article_id" value = <%= @article.id %> />
+        <select class="form-control select-lists d-inline" id="select-lists" name="selected_list">
+          <option disabled value="">リストを選択</option>
+          <% @lists.each do |list|%>
+            <option value="<%= list.id %>"><%= list.name %></option>
+          <% end %>
+        </select>
+        <input type="submit" class="btn" value="追加" id="select-lists-button" />
+      </form>
       <button onclick="location.href='<%= edit_article_path(@article.id) %>'" class="btn d-inline edit-button"> 編集</button>
     <% end %>
   </div>
