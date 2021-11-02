@@ -3,25 +3,27 @@
   margin-top:60px;
   width: 80%;
   min-width:600px;
-  border: 0.5px solid #aaaaaa;
   padding-left: 15px;
   padding-right:15px;
   padding-bottom: 30px;
+  background-color: white;
 
   .edit-button{
     float:right;
+    margin-top: 10px;
+  }
+
+  .assign-button{
+    margin-top: 10px;
   }
 
   .select-list-form{
     display: inline-block;
+    margin-top: 10px;
   }
 
   .select-lists{
     width:350px;
-  }
-
-  .admin-article{
-    margin-top: 10px;
   }
 }
 

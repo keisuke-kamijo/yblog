@@ -8,7 +8,7 @@
   width: 100%;
   min-width:400px;
   font-size: 40px;
-  color: #777777;
+  color: #444;
   padding-left: 15px;
   padding-right:15px;
 }
@@ -17,9 +17,10 @@
   margin-top:10px;
   width:100%;
   min-width:400px;
-  border: 0.5px solid #aaaaaa;
   padding-left: 15px;
   padding-right:15px;
+  background-color: white;
+  overflow:hidden;
 }
 
 .showArticles .article{
@@ -28,6 +29,7 @@
   border: 0.5px solid #aaaaaa;
   border-right-style: none;
   border-left-style: none;
+  border-bottom-style: none;
 }
 .showArticles .article:hover{
   background-color: #efefef;

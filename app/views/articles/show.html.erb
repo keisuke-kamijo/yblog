@@ -4,7 +4,7 @@
 <div class="showArticle p-3" id="app">
   <div class="form-inline admin-article">
     <% if owner_of_article?(@article.id) %>
-      <button class="btn" id="button_for_display" onclick="display_form()"><b>＋</b>リストに記事を追加</button>
+      <button class="btn assign-button" id="button_for_display" onclick="display_form()"><b>＋</b>リストに記事を追加</button>
       <form action="/users/<%= @article.user_id %>/articles" method="post" class="select-list-form">
         <input type="hidden" name="article_id" value = <%= @article.id %> />
         <select class="form-control select-lists d-inline" id="select-lists" name="selected_list">
