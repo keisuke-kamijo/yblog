@@ -19,7 +19,7 @@
       </div>
     <% end %>
           <% @lists.each do |list| %>
-              <div class="list" >
+              <div class="list" v-on:click="jumpArticle(<%= list.id %>)">
                   <div class="listTitle"><%= list.name %></div>
               </div>
           <% end %>
@@ -27,6 +27,15 @@
   </div>
 
 <script>
+  new Vue({
+      el:'#app',
+      methods:{
+          jumpArticle: function(id){
+              var link = "/lists/" + id;
+              location.href=link;
+          }
+      }
+  })
   function hide_form(){
     document.getElementById("new_list_name").style.display="none";
     document.getElementById("new_list_submit").style.display="none";
