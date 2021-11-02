@@ -4,10 +4,17 @@
   width:60%;
   min-width:400px;
   .edit-button{
-    display: block;
+    display: inline-block;
     margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
+  }
+  .delete-list-form{
+    display: inline;
+  }
+  .delete-button{
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: red;
   }
 }
 .titleOfSeries{

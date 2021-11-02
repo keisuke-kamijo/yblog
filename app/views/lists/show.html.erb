@@ -3,7 +3,13 @@
 <% end %>
   <div class="titleAndSeries" id="app">
     <% if owner_of_list?(@list.user_id) %>
+      <div class="form-inline">
       <button onclick="location.href='<%= edit_list_path(@list.id) %>'" class="btn d-inline edit-button"> 編集</button>
+      <form method = "post" action=<%= "/lists/"+ @list.id.to_s %> onSubmit="return confirmDeletion()" class="delete-list-form">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value ="削除" class = "btn d-inline delete-button">
+      </form>
+      </div>
     <% end %>
     <span class="titleOfSeries"><%= @list.name %></span>
     <div class="showArticles">
