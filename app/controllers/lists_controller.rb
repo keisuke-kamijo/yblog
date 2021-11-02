@@ -16,6 +16,14 @@ class ListsController < ApplicationController
     @articles = @list.articles
   end
 
+  def destroy
+    list = List.find(params[:id])
+    user_id = list.user_id
+    list.destroy
+    flash[:success] = 'リストを削除しました。'
+    redirect_to "/users/#{user_id}/lists"
+  end
+
   private
 
   def list_params
