@@ -34,6 +34,7 @@
   padding-left: 15px;
   padding-right:15px;
   background-color: white;
+  overflow:hidden;
 }
 
 .showArticles .article{
@@ -42,7 +43,7 @@
   border: 0.5px solid #aaaaaa;
   border-right-style: none;
   border-left-style: none;
-  border-top-style: none;
+  border-bottom-style: none;
 }
 .showArticles .article:hover{
   background-color: #efefef;
