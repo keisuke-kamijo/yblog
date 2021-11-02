@@ -2,17 +2,20 @@
   <%= stylesheet_link_tag 'list' %>
 <% end %>
   <div class="titleAndSeries" id="app">
-      <div class="titleOfSeries"><%= @list.name %></div>
-      <div class="showArticles">
-          <% @articles.each do |article| %>
-              <div class="article" v-on:click="jumpArticle(<%= article.id %>)">
-                  <div class="articleTitle"><%= article.title %></div>
-                  <% article.tags.each do |tag| %>
-                    <span class="articleTag"><%= tag.name %></span>
-                  <% end %>
-              </div>
+    <% if owner_of_list?(@list.user_id) %>
+      <button onclick="location.href='<%= edit_list_path(@list.id) %>'" class="btn d-inline edit-button"> 編集</button>
+    <% end %>
+    <span class="titleOfSeries"><%= @list.name %></span>
+    <div class="showArticles">
+      <% @articles.each do |article| %>
+        <div class="article" v-on:click="jumpArticle(<%= article.id %>)">
+          <div class="articleTitle"><%= article.title %></div>
+          <% article.tags.each do |tag| %>
+            <span class="articleTag"><%= tag.name %></span>
           <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 <script>
   new Vue({

@@ -26,10 +26,6 @@ module SessionsHelper
     session[:forwarding_url] = request.url if request.get?
   end
 
-  def owner_of_list?(id)
-    id.to_i == current_user.id
-  end
-
   def owner_of_article?(_article_id)
     user_id = Article.find(params[:id]).user_id
     user = User.find(user_id)

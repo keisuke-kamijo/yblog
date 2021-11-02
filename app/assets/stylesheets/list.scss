@@ -1,7 +1,14 @@
 .titleAndSeries{
   margin: 0 auto;
+  margin-top: 50px;
   width:60%;
   min-width:400px;
+  .edit-button{
+    display: block;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 .titleOfSeries{
   margin-top:60px;
