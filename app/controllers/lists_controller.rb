@@ -11,6 +11,11 @@ class ListsController < ApplicationController
     redirect_back fallback_location: login_path
   end
 
+  def show
+    @list = List.find(params[:id])
+    @articles = @list.articles
+  end
+
   private
 
   def list_params
