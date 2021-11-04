@@ -16,6 +16,25 @@ class ListsController < ApplicationController
     @articles = @list.articles
   end
 
+  def edit
+    @list = List.find(params[:id])
+    @articles = @list.articles
+  end
+
+  def update
+    logger.debug('あああ')
+    logger.debug(params)
+    list_assignments = Assignment.where(list_id: params[:id])
+
+    new_rank = 1
+    params[:article_id_array].each do |article_id|
+      assignment = list_assignments.find_by(article_id: article_id.to_i)
+      # assignment.rank = new_rank
+      assignment.update(rank: new_rank)
+      new_rank += 1
+    end
+  end
+
   def destroy
     list = List.find(params[:id])
     user_id = list.user_id
