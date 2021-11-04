@@ -1,0 +1,50 @@
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.23.2/vuedraggable.umd.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'list' %>
+<% end %>
+
+<div class="titleAndSeries" id="app">
+  <div class="titleOfSeries"><%= @list.name %></div>
+  <div class="showArticles">
+    <div id="sort" class="draggableArea">
+      <% @articles.each do |article| %>
+        <div class="article">
+          <input type="hidden" class="articleID" value="<%= article.id %>"/>
+          <div class="articleTitle"><%= article.title %></div>
+        </div>
+      <% end %>
+    </div>
+    <button class="myaccount btn" v-on:click="applySortResult(<%= @list.id %>)">適用</button>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    methods:{
+      applySortResult: function(list_id){
+        let sort = document.getElementById('sort');
+        let items = sort.querySelectorAll('div.article');
+        let rank = [];
+        for (var i = 0; i < items.length; i++) {
+          rank.push(items[i].querySelector('.articleID').value);
+        }
+        const modify = {list_id: list_id,article_id_array: rank}
+        axios.patch('/lists/<%=@list.id%>',modify)
+          .then(res => {
+            console.log(res);
+            location.href="<%= list_url(@list.id) %>";
+          })
+          .catch(err => {
+            console.log(err)
+          });
+        console.log(modify);
+      }
+    }
+  });
+  let rank = [];
+  var sort = document.getElementById('sort');
+  var sortable = Sortable.create(sort);
+</script>
