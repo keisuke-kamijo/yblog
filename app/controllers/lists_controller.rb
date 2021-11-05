@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @articles = @list.articles
+    @articles = @list.articles.order(:rank)
   end
 
   def edit
@@ -29,7 +29,6 @@ class ListsController < ApplicationController
     new_rank = 1
     params[:article_id_array].each do |article_id|
       assignment = list_assignments.find_by(article_id: article_id.to_i)
-      # assignment.rank = new_rank
       assignment.update(rank: new_rank)
       new_rank += 1
     end
