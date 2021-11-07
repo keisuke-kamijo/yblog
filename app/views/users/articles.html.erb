@@ -2,8 +2,14 @@
   <%= stylesheet_link_tag 'articles' %>
 <% end %>
   <div class="titleAndSeries" id="app">
-      <div class="titleOfSeries">記事一覧</div>
       <div class="showArticles">
+        <div class="tab-content">
+          <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="/users/<%=params[:id]%>" class="tab-linktext">ホーム</a></li>
+            <li role="presentation" class="active"><a href="#">記事一覧</a></li>
+            <li role="presentation"><a href="/users/<%=params[:id]%>/lists" class="tab-linktext">リスト一覧</a></li>
+          </ul>
+        </div>
           <% @articles.each do |article| %>
               <div class="article" v-on:click="jumpArticle(<%= article.id %>)">
                   <div class="articleTitle"><%= article.title %></div>

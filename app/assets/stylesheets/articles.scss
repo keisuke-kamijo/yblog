@@ -15,16 +15,17 @@
 
 .showArticles{
   margin-top:10px;
+  padding-bottom: 10px;
   width:100%;
   min-width:400px;
-  padding-left: 15px;
-  padding-right:15px;
   background-color: white;
   overflow:hidden;
 }
 
 .showArticles .article{
-  margin:10px;
+  margin-top:10px;
+  margin-left: 20px;
+  margin-right: 20px;
   height:100px;
   border: 0.5px solid #aaaaaa;
   border-right-style: none;
@@ -42,4 +43,8 @@
 .showArticles .articleTag{
   margin-left: 10px;
   color: #777777;
+}
+
+.tab-linktext{
+  color: black;
 }
