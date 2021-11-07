@@ -1,0 +1,24 @@
+.tab-contentss{
+  background-color: white;
+  margin: 0 auto;
+  width:70%;
+  min-width:400px;
+  margin-top: 15px;
+
+  .tab-linktext{
+    color: black;
+  }
+
+  .accountInfo{
+    margin:20px;
+
+    .username{
+      font-size: 40px;
+    }
+
+    .topic{
+      margin-top:15px;
+    }
+  }
+}
+

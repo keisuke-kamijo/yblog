@@ -1,15 +1,16 @@
 #new_list_name{
   width:80%;
-  margin-left: 10px;
+  display: inline-block;
+  margin: 10px;
 }
 
 #button_for_display{
-  margin-left: 10px;
+  margin: 10px;
 }
 
 .titleAndSeries{
   margin: 0 auto;
-  width:60%;
+  width:70%;
   min-width:400px;
 }
 .titleOfSeries{
@@ -24,17 +25,17 @@
 
 .showLists{
   margin-top:10px;
+  padding-bottom: 10px;
   width:100%;
   min-width:400px;
-  padding-top: 10px;
-  padding-left: 15px;
-  padding-right:15px;
   background-color: white;
   overflow:hidden;
 }
 
 .showLists .list{
   margin:10px;
+  margin-left: 20px;
+  margin-right: 20px;
   height:100px;
   border: 0.5px solid #aaaaaa;
   border-right-style: none;
@@ -48,4 +49,8 @@
   margin-left: 5px;
   font-size: 30px;
   font-weight: bold;
+}
+
+.tab-linktext{
+  color: black;
 }

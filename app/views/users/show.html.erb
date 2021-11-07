@@ -1,35 +1,29 @@
-<div class="accountInfo">
-  <div class="profile-topic">
-      <div class="profile">
-          <p class="trim-image-to-circle">
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'home' %>
+<% end %>
+<div class="tab-contentss">
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation" class="active"><a href="#">ホーム</a></li>
+    <li role="presentation"><a href="/users/<%=params[:id]%>/articles" class="tab-linktext">記事一覧</a></li>
+    <li role="presentation"><a href="/users/<%=params[:id]%>/lists" class="tab-linktext">リスト一覧</a></li>
+  </ul>
 
-          </p>
-          <div class="username">
-              <%= @user.name %>
-          </div>
-          <div class="articleInfo">
-              投稿：<%= @num_of_articles %>件
-          </div>
-      </div>
-      <div class="topic">
-          <div class="description">関連する話題:</div>
-          <% @tags.each do |tag| %>
-          <span class="tag" v-on:click="searchWithTag('{{ $tag }}');">
-              <%= tag.name %>
-          </span>
-          <% end %>
-      </div>
+  <div class="accountInfo">
+    <div class="profile">
+        <div class="username">
+            <%= @user.name %>
+        </div>
+        <div class="articleInfo">
+            投稿：<%= @num_of_articles %>件
+        </div>
+    </div>
+    <div class="topic">
+        <div class="description">関連する話題:</div>
+        <% @tags.each do |tag| %>
+        <span class="tag">
+            <%= tag.name %>
+        </span>
+        <% end %>
+    </div>
   </div>
 </div>
-
-<script>
-  new Vue({
-      el:'#app',
-      methods:{
-          searchWithTag: function(id){
-              var link = "/yourblog/articles?tag=" + id;
-              location.href=link;
-          }
-      }
-  })
-</script>
