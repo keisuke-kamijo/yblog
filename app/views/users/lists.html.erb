@@ -39,17 +39,24 @@
           jumpArticle: function(id){
               var link = "/lists/" + id;
               location.href=link;
-          }
+          },
       }
   })
   function hide_form(){
     document.getElementById("new_list_name").style.display="none";
     document.getElementById("new_list_submit").style.display="none";
+    console.log("ああああああああああああああああ");
   }
   function display_form(){
     document.getElementById("new_list_name").style.display="inline";
     document.getElementById("new_list_submit").style.display="inline";
     document.getElementById("button_for_display").style.display="none";
   }
-  window.onload = hide_form;
+  
+  //window.onload = hide_form;  
+  if (document.readyState !== "loading") {
+  hide_form();
+} else {
+  document.addEventListener("DOMContentLoaded", hide_form, false);
+}
 </script>
