@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     tag_names = params[:article][:tags][:name].split
     if Article.save_with_tags(current_user, tag_names, article_params)
       flash[:success] = '投稿が完了しました'
-      redirect_to root_url
+      redirect_to "/users/#{current_user.id}/articles"
     else
       render 'new'
     end

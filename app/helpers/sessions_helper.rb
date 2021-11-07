@@ -15,6 +15,7 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
+    session[:forwarding_url] = nil
   end
 
   def redirect_back_or(default)
