@@ -3,7 +3,6 @@
 <% end %>
 
 <div class="titleAndSeries" id="app">
-      <div class="titleOfSeries">リスト一覧</div>
       <div class="showLists">
         <% if logged_in? && owner_of_list?(params[:id].to_i) %>
     
@@ -18,6 +17,13 @@
       <% end %>
       </div>
     <% end %>
+      <div class="tab-content">
+          <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="/users/<%=params[:id]%>" class="tab-linktext">ホーム</a></li>
+            <li role="presentation"><a href="/users/<%=params[:id]%>/articles" class="tab-linktext">記事一覧</a></li>
+            <li role="presentation" class="active"><a href="#">リスト一覧</a></li>
+          </ul>
+        </div>
           <% @lists.each do |list| %>
               <div class="list" v-on:click="jumpArticle(<%= list.id %>)">
                   <div class="listTitle"><%= list.name %></div>
