@@ -29,6 +29,7 @@
 
 .showArticle .articleTitle{
   font-size: 50px;
+  margin-top: 0px;
 }
 
 .showArticle .tags{
@@ -56,4 +57,10 @@
   float:right;
   margin-top: 10px;
   color: red;
+}
+
+.username{
+  color: #444;
+  display: inline-block;
+  margin-top: 20px;
 }

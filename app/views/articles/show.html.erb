@@ -18,6 +18,7 @@
       <button onclick="location.href='<%= edit_article_path(@article.id) %>'" class="btn d-inline edit-button"> 編集</button>
     <% end %>
   </div>
+  <a href="/users/<%= @article.user_id%>" class="username">@<%= @article.user.name%></a>
   <h1 class="articleTitle"><%= @article.title %></h1>
   <div class="tags">
     <% @tags.each do |tag| %>
