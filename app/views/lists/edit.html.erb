@@ -13,13 +13,17 @@
         <div class="article">
           <input type="hidden" class="articleID" value="<%= article.id %>"/>
           <div class="articleTitle"><%= article.title %></div>
+          <form action="/assignments/<%= @list.id %>/<%= article.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="削除" class="btn delete-assignment-button">
+          </form>
+
         </div>
       <% end %>
     </div>
     <button class="myaccount btn" v-on:click="applySortResult(<%= @list.id %>)">適用</button>
   </div>
 </div>
-
 <script>
   new Vue({
     el:'#app',
@@ -44,7 +48,6 @@
       }
     }
   });
-  let rank = [];
   var sort = document.getElementById('sort');
   var sortable = Sortable.create(sort);
 </script>
