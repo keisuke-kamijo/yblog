@@ -68,9 +68,7 @@ class ArticlesController < ApplicationController
 
   def eject
     assignments = Assignment.where(list_id: params[:list_id]).where(article_id: params[:article_id])
-    assignments.each do |assignment|
-      assignment.delete
-    end
+    assignments.each(&:delete)
 
     redirect_back fallback_location: login_path
   end
