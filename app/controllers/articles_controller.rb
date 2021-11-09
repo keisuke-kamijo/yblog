@@ -66,6 +66,15 @@ class ArticlesController < ApplicationController
     redirect_to article_url(params[:article_id])
   end
 
+  def eject
+    assignments = Assignment.where(list_id: params[:list_id]).where(article_id: params[:article_id])
+    assignments.each do |assignment|
+      assignment.delete
+    end
+
+    redirect_back fallback_location: login_path
+  end
+
   private
 
   def article_params
