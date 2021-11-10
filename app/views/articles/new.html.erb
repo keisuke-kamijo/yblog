@@ -7,13 +7,13 @@
     <%= form_for @article do |f| %>
       <%= render 'shared/error_messages_editor' %>
 
-      <%= f.text_field :title, class: 'titleForm', placeholder: "title" %>
+      <%= f.text_field :title, class: 'titleForm', placeholder: "記事のタイトル" %>
 
       <%= f.fields_for :tags do |i| %>
-      <%= i.text_field :name, class: 'tagsForm', placeholder: "tag" %>
+      <%= i.text_field :name, class: 'tagsForm', placeholder: "記事に付けるタグをスペース区切りで（例：docker nginx)" %>
       <% end %>
       <div class="flexbox">
-        <%= f.text_area :body, class: 'mdEditor', placeholder: "body", "v-model" => "input" %>
+        <%= f.text_area :body, class: 'mdEditor', placeholder: "markdown形式で本文を記述", "v-model" => "input" %>
         <div class="mdResult" v-html="convertMarkdown"></div>
       </div>
       <%= f.submit "投稿", class: "btn btn-primary" %>
