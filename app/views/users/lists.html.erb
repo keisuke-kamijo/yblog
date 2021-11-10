@@ -3,34 +3,32 @@
 <% end %>
 
 <div class="titleAndSeries" id="app">
-      <div class="showLists">
-        <% if logged_in? && owner_of_list?(params[:id].to_i) %>
-    
-      <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
-      <div class = "new_list_form">
+  <div class="showLists">
+  <div class="tab-content">
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation"><a href="/users/<%=params[:id]%>" class="tab-linktext">ホーム</a></li>
+        <li role="presentation"><a href="/users/<%=params[:id]%>/articles" class="tab-linktext">記事一覧</a></li>
+        <li role="presentation" class="active"><a href="#">リスト一覧</a></li>
+      </ul>
+    </div>
+    <% if logged_in? && owner_of_list?(params[:id].to_i) %>
+    <button class="btn" id="button_for_display" onclick="display_form()">新規リストを追加</button>
+    <div class = "new_list_form">
       <%= form_for(@new_list) do |f| %>
         <%= f.text_field :name, class: 'form-control' , placeholder: 'リスト名を入力', id: 'new_list_name' %>
-
         <%= f.hidden_field :is_placed, :value =>  true %>
         <%= f.hidden_field :user_id, :value =>  params[:id] %>
         <%= f.submit "保存", class: "btn" ,id: 'new_list_submit' %>
       <% end %>
-      </div>
-    <% end %>
-      <div class="tab-content">
-          <ul class="nav nav-tabs nav-justified">
-            <li role="presentation"><a href="/users/<%=params[:id]%>" class="tab-linktext">ホーム</a></li>
-            <li role="presentation"><a href="/users/<%=params[:id]%>/articles" class="tab-linktext">記事一覧</a></li>
-            <li role="presentation" class="active"><a href="#">リスト一覧</a></li>
-          </ul>
-        </div>
-          <% @lists.each do |list| %>
-              <div class="list" v-on:click="jumpArticle(<%= list.id %>)">
-                  <div class="listTitle"><%= list.name %></div>
-              </div>
-          <% end %>
-      </div>
+    </div>
+  <% end %>
+      <% @lists.each do |list| %>
+          <div class="list" v-on:click="jumpArticle(<%= list.id %>)">
+              <div class="listTitle"><%= list.name %></div>
+          </div>
+      <% end %>
   </div>
+</div>
 
 <script>
   new Vue({
