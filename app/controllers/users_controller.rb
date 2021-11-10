@@ -25,6 +25,7 @@ class UsersController < ApplicationController
         @tags.add(tag)
       end
     end
+    @lists = List.where(user_id: params[:id])
   end
 
   def articles
