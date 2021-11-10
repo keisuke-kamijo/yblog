@@ -8,7 +8,7 @@
     <li role="presentation"><a href="/users/<%=params[:id]%>/lists" class="tab-linktext">リスト一覧</a></li>
   </ul>
 
-  <div class="accountInfo">
+  <div class="accountInfo" id="app">
     <div class="profile">
         <div class="username">
             <%= @user.name %>
@@ -25,5 +25,31 @@
         </span>
         <% end %>
     </div>
+
+    <% @lists.each do |list|%>
+      <% if list.articles.count > 0%>
+      <span class="list-title" v-on:click="jumpList(<%= list.id %>)"><%= list.name %></span>
+      <div class="list">
+        <% list.articles.order(:rank).each do |article| %>
+          <div class="article" v-on:click="jumpArticle(<%= article.id %>)"><%= article.title%></div>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
+<script>
+new Vue({
+  el:'#app',
+  methods:{
+      jumpArticle: function(id){
+          var link = "/articles/" + id;
+          location.href=link;
+      },
+      jumpList: function(id){
+          var link = "/lists/" + id;
+          location.href=link;
+      },
+  }
+})
+</script>

@@ -11,6 +11,7 @@
 
   .accountInfo{
     margin:20px;
+    margin-left:35px;
 
     .username{
       font-size: 40px;
@@ -19,6 +20,34 @@
     .topic{
       margin-top:15px;
     }
+  }
+
+  .list-title{
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 25px;
+  }
+
+  .list{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    border-top: 0.5px solid #aaaaaa;
+    padding-right: 10px;
+  }
+  .article{
+    margin:20px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    width:200px;
+    min-width:200px;
+    height:90px;
+    border: 0.5px solid #aaaaaa;
+    padding :10px;
+    font-size :20px;
+  }
+  .article:hover{
+    background-color: #efefef;
   }
 }
 
