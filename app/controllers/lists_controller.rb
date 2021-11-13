@@ -22,8 +22,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    logger.debug('あああ')
-    logger.debug(params)
     list_assignments = Assignment.where(list_id: params[:id])
 
     new_rank = 1

@@ -43,7 +43,6 @@
     computed:{
       convertMarkdown:function(){
         var content = <%== JSON.dump(@article.body) %>;
-        console.log(content);
         return marked(content);
       }
     }
