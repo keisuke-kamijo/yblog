@@ -67,5 +67,10 @@
     document.getElementById("select-lists-button").style.display="inline";
     document.getElementById("button_for_display").style.display="none";
   }
-  window.onload = hide_form;
+  
+  if (document.readyState !== "loading") {
+    hide_form();
+  } else {
+    document.addEventListener("DOMContentLoaded", hide_form, false);
+  }
 </script>
