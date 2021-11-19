@@ -22,13 +22,10 @@ class ListsController < ApplicationController
   end
 
   def update
-    list_assignments = Assignment.where(list_id: params[:id])
-
-    new_rank = 1
-    params[:article_id_array].each do |article_id|
-      assignment = list_assignments.find_by(article_id: article_id.to_i)
-      assignment.update(rank: new_rank)
-      new_rank += 1
+    if List.update_with_rank(params[:id], params[:article_id_array])
+      flash[:success] = 'リストを更新しました。'
+    else
+      flash[:danger] = '更新に失敗しました。'
     end
   end
 
