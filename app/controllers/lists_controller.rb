@@ -18,7 +18,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    @articles = @list.articles
+    @articles = @list.articles.order(:rank)
   end
 
   def update
