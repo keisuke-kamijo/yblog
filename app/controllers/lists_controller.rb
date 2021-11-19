@@ -58,6 +58,4 @@ class ListsController < ApplicationController
     user_id = List.find(params[:id]).user_id
     redirect_to(root_url) unless user_id == current_user.id
   end
-
-
 end
