@@ -31,7 +31,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test "body should not be too long" do
-    @article.body = "a" * 1001
+    @article.body = "a" * 10001
     assert_not @article.valid?
   end
 
